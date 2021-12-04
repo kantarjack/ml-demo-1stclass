@@ -1,0 +1,20 @@
+stages:
+    stage_1:
+        cmd: python stage_1.py
+        deps:
+        - stage_1.py                # Stage 1 has dependency with it self i.e. when ever there is some change in the .py file it need to be executed
+        outs:
+        - artifact1.txt
+    stage_2:
+        cmd: python stage_2.py
+        deps:
+        - artifact1.txt
+        - stage_1.py
+        - stage_2.py
+    stage_3:
+        cmd: python stage_3.py
+        deps:
+        - artifact1.txt
+        - stage_1.py
+        - stage_2.py
+        - stage_3.py
